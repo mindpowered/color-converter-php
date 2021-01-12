@@ -1,0 +1,18 @@
+{
+    "name": "mindpowered/colorconverter",
+    "version": "0.0.1",
+    "description": "ColorConverter",
+    "license": "CPAL-1.0",
+    "autoload": {
+        "psr-4": {
+            "haxe\\": "lib/haxe/",
+            "colorconverter\\": "lib/colorconverter/",
+            "mindpowered\\colorconverter\\": "lib/wrappers/",
+            "php\\": "lib/php/",
+            "": "lib/"
+        }
+    },
+    "require": {
+        "mindpowered/maglev": "*"
+    }
+}
