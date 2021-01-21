@@ -75,6 +75,36 @@ class ColorConverter
 	}
 
 	/**
+	 * Convert from HEX
+	 * @param string $hex 
+	 * @return array 
+	 */
+	public function FromHEX($hex)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$hex];
+		$ret = null;
+		$phpbus->call('ColorConverter.FromHEX', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
+		return $ret;
+	}
+
+	/**
+	 * Convert from XYZ
+	 * @param float $x 
+	 * @param float $y 
+	 * @param float $z 
+	 * @return array 
+	 */
+	public function FromXYZ($x, $y, $z)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$x, $y, $z];
+		$ret = null;
+		$phpbus->call('ColorConverter.FromXYZ', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
+		return $ret;
+	}
+
+	/**
 	 * Convert from RGB using illumination and observer angles
 	 * @param float $r 
 	 * @param float $g 
@@ -126,6 +156,40 @@ class ColorConverter
 		$args = [$c, $m, $y, $k, $observer1, $observer2];
 		$ret = null;
 		$phpbus->call('ColorConverter.ConvertCMYK', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
+		return $ret;
+	}
+
+	/**
+	 * Convert from HEX using illumination and observer angles
+	 * @param string $hex 
+	 * @param string $observer1 
+	 * @param string $observer2 
+	 * @return array 
+	 */
+	public function ConvertHEX($hex, $observer1, $observer2)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$hex, $observer1, $observer2];
+		$ret = null;
+		$phpbus->call('ColorConverter.ConvertHEX', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
+		return $ret;
+	}
+
+	/**
+	 * Convert from XYZ using illumination and observer angles
+	 * @param float $x 
+	 * @param float $y 
+	 * @param float $z 
+	 * @param string $observer1 
+	 * @param string $observer2 
+	 * @return array 
+	 */
+	public function ConvertXYZ($x, $y, $z, $observer1, $observer2)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$x, $y, $z, $observer1, $observer2];
+		$ret = null;
+		$phpbus->call('ColorConverter.ConvertXYZ', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
 		return $ret;
 	}
 
@@ -182,6 +246,38 @@ class ColorConverter
 	}
 
 	/**
+	 * Add a reference color
+	 * @param string $system 
+	 * @param string $name 
+	 * @param string $description 
+	 * @param string $hex 
+	 * @return void
+	 */
+	public function AddReferenceColorByHEX($system, $name, $description, $hex)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$system, $name, $description, $hex];
+		$phpbus->call('ColorConverter.AddReferenceColorByHEX', $args, function($async_ret){});
+	}
+
+	/**
+	 * Add a reference color
+	 * @param string $system 
+	 * @param string $name 
+	 * @param string $description 
+	 * @param float $x 
+	 * @param float $y 
+	 * @param float $z 
+	 * @return void
+	 */
+	public function AddReferenceColorByXYZ($system, $name, $description, $x, $y, $z)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$system, $name, $description, $x, $y, $z];
+		$phpbus->call('ColorConverter.AddReferenceColorByXYZ', $args, function($async_ret){});
+	}
+
+	/**
 	 * 
 	 * @param float $r 
 	 * @param float $g 
@@ -227,6 +323,36 @@ class ColorConverter
 		$args = [$c, $m, $y, $k];
 		$ret = null;
 		$phpbus->call('ColorConverter.FindReferenceColorByCMYK', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
+		return $ret;
+	}
+
+	/**
+	 * 
+	 * @param string $hex 
+	 * @return array 
+	 */
+	public function FindReferenceColorByHEX($hex)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$hex];
+		$ret = null;
+		$phpbus->call('ColorConverter.FindReferenceColorByHEX', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
+		return $ret;
+	}
+
+	/**
+	 * 
+	 * @param float $x 
+	 * @param float $y 
+	 * @param float $z 
+	 * @return array 
+	 */
+	public function FindReferenceColorByXYZ($x, $y, $z)
+	{
+		$phpbus = MagLevPhp::getInstance('default');
+		$args = [$x, $y, $z];
+		$ret = null;
+		$phpbus->call('ColorConverter.FindReferenceColorByXYZ', $args, function($async_ret) use (&$ret) { $ret = $async_ret; });
 		return $ret;
 	}
 
