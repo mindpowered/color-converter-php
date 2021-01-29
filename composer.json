@@ -1,6 +1,6 @@
 {
     "name": "mindpowered/colorconverter",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Converter to convert between various color systems such as RGB, CIELAB, CMYK, HEX, RGB, and XYZ",
     "license": "CPAL-1.0",
     "autoload": {
